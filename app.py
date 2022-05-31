@@ -3,8 +3,6 @@ from telebot import types
 from Config import TOKEN, keys
 from Utils import ConvertionExeption, CryptoConverter
 
-TOKEN = '5340905027:AAHVp02Es4xYRfFkmZiuqt9fhGq9F0tW12s'
-
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -15,7 +13,7 @@ def start(message):
     item1 = types.KeyboardButton('Помощь')
     item2 = types.KeyboardButton('Список валют:')
     item3 = types.KeyboardButton('API предоставлен')
-    item4 = types.KeyboardButton('Информация')
+    item4 = types.KeyboardButton('Дополнительная информация')
 
     markup.add(item1, item2, item3, item4)
 
@@ -46,13 +44,13 @@ def bot_message(message):
                 value = message.text.split(' ')
 
                 if len(value) != 3:
-                    raise ConvertionExeption('Слишком много параметров.')
+                    raise ConvertionExeption('Введено слишком много параметров.')
 
                 quote, base, amount = value
                 total_base = CryptoConverter.convert(quote, base, amount)
 
             except ConvertionExeption as e:
-                bot.reply_to(message, f'Ошибка пользователя. \n{e}')
+                bot.reply_to(message, f'Ошибка со стороны пользователя. \n{e}')
 
             except Exception as e:
                 bot.reply_to(message, f'Не удалось обработать команду\n{e}')
