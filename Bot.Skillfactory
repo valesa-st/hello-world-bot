@@ -3,6 +3,8 @@ from telebot import types
 from Config import TOKEN, keys
 from Utils import ConvertionExeption, CryptoConverter
 
+TOKEN = '5340905027:AAHVp02Es4xYRfFkmZiuqt9fhGq9F0tW12s'
+
 
 bot = telebot.TeleBot(TOKEN)
 
