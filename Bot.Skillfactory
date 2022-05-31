@@ -19,7 +19,7 @@ def start(message):
 
     markup.add(item1, item2, item3, item4)
 
-    bot.send_message(message.chat.id, 'Привет лентяй, я могу конвертировать валюту'.format(message.from_user),
+    bot.send_message(message.chat.id, 'Привет, дорогой друг, я могу конвертировать валюту!'.format(message.from_user),
                      reply_markup=markup)
 
 
@@ -27,7 +27,7 @@ def start(message):
 def bot_message(message):
     if message.chat.type == 'private':
         if message.text == 'Помощь':
-            bot.send_message(message.chat.id, 'Чтобы начать конвертацию, введите команду в формате: '
+            bot.send_message(message.chat.id, 'Для начала конвертации, введите команду в формате: '
                                               '\n--> Название валюты <-- '
                                               '\n--> В какую валюту перевести <-- '
                                               '\n--> Количество переводимой валюты <-- ')
@@ -40,7 +40,7 @@ def bot_message(message):
             bot.send_message(message.chat.id, message.text)
 
         elif message.text == 'Информация':
-            bot.send_message(message.chat.id, 'Бот использует халявный API, возможности ограничены!')
+            bot.send_message(message.chat.id, 'Возможности бота ограничены!')
         else:
             try:
                 value = message.text.split(' ')
